@@ -2,16 +2,17 @@ import random
 
 word_list = ["banana", "apple", "pear", "peach", "strawberry"] #Posible words the code will choose
 word = random.choice(word_list) #Picks a random word from the list
-guess = input("Which letter are you guessing? ") #Takes user guess
+
 
 def ask_for_input(): #Checks if the guess is a single letter
-    while not (guess.isalpha() and len(guess)==1):
-        print("Guess is not a single letter.")
-        guess = input("Which letter are you guessing? ")
-    return True
-
+    while True:
+        guess = input("Which letter are you guessing? ") #Takes user guess
+        if guess.isalpha() and len(guess) == 1:
+            return guess
+        else:
+            print("Guess is not a single letter.")
+        
 def check_guess(guess):
-
     upper_guess = guess.upper() #Creates upper and lower case guesses so case doesn't need to be matched
     lower_guess = guess.lower()
 
