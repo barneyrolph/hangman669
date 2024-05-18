@@ -1,15 +1,24 @@
 import random
 
-word_list = ["banana", "apple", "pear", "peach", "strawberry"]
-word = random.choice(word_list)
-guess = input("Which letter are you guessing? ")
-if len(guess) == 1:
-    print("Nice Guess!")
-elif guess == word:
-    print("You win!")
-else:
-    print("Oops, that doesn't look like a good guess try again")
-guess = input("Which letter are you guessing? ")
+word_list = ["banana", "apple", "pear", "peach", "strawberry"] #Posible words the code will choose
+word = random.choice(word_list) #Picks a random word from the list
+guess = input("Which letter are you guessing? ") #Takes user guess
 
+def ask_for_input(): #Checks if the guess is a single letter
+    while not (guess.isalpha() and len(guess)==1):
+        print("Guess is not a single letter.")
+        guess = input("Which letter are you guessing? ")
+    return True
 
-print(word, word_list)
+def check_guess(guess):
+
+    upper_guess = guess.upper() #Creates upper and lower case guesses so case doesn't need to be matched
+    lower_guess = guess.lower()
+
+    if (upper_guess or lower_guess) in word:
+        print(f"Good guess! {guess} is in the word.") 
+    else:
+        print(f"Sorry, {guess} is not in the word. Try again.")
+
+ask_for_input()
+check_guess(guess)
