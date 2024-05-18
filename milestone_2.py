@@ -21,5 +21,5 @@ def check_guess(guess):
     else:
         print(f"Sorry, {guess} is not in the word. Try again.")
 
-ask_for_input()
+guess = ask_for_input()
 check_guess(guess)
