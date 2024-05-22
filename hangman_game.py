@@ -1,16 +1,18 @@
 import random
 
+
 class Hangman:
+    #TODO add docstrings
     def __init__(self, word_list, num_lives = 5):
         self.word_list = word_list
         self.num_lives = num_lives
-        self.word = random.choice(word_list) #random word from list
-        self.word_chars = list(self.word) #splits the word into characters
-        self.word_guessed = [] #To be displayed to player
-        for char in self.word_chars: #fills the word_guessed list with the correct number of underscores
+        self.word = random.choice(word_list) 
+        self.word_chars = list(self.word) 
+        self.word_guessed = [] 
+        for char in self.word_chars: #TODO change to quick way
             self.word_guessed.append("_")
-        self.list_of_guesses=[] #list of letters guessed
-        self.num_letters = 0 #number of correct letters
+        self.list_of_guesses=[] 
+        self.num_letters = 0 
     
     def check_guess(self, guess):
         lower_guess = guess.lower()
@@ -42,12 +44,12 @@ class Hangman:
             print("Congratulations! You've guessed the word!")
         else:
             print(f"Game over! The word was {self.word}.")
-    @staticmethod
-    def play_game(word_list):
-         game = Hangman(word_list, num_lives=5)
-         game.ask_for_input()
 
+
+def play_game(word_list):
+    game = Hangman(word_list)
+    game.ask_for_input()
 
 if __name__ == '__main__':
     word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']
-    Hangman.play_game(word_list)
+    play_game(word_list)
